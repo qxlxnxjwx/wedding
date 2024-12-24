@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY ANNIVERSARY!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Snowflakes */
+        .snowflake {
+            position: fixed; /* Change to fixed to ensure snowflakes fall over all sections */
+            top: -10px; /* Start from top */
+            width: 5px; /* Small size for snowflakes */
+            height: 5px; /* Small size for snowflakes */
+            background-color: white;
+            border-radius: 50%; /* Make the snowflake a circle */
+            opacity: 0.8;
+            pointer-events: none;
+            user-select: none;
+            animation: fall linear infinite;
+            z-index: 9999; /* Ensure snowflakes are above all other content */
+        }
+
+        /* Snow falling animation */
+        @keyframes fall {
+            0% {
+                top: -10px;
+                transform: translateX(0);
+            }
+            100% {
+                top: 100vh; /* Snowflakes fall to the bottom of the page */
+                transform: translateX(50px); /* Snowflakes drift to the side */
+            }
+        }
+
+        /* Snowflake styling (size and speed) */
+        .snowflake:nth-of-type(odd) {
+            width: 4px;
+            height: 4px;
+            animation-duration: 8s;
+            animation-delay: 0s;
+        }
+
+        .snowflake:nth-of-type(even) {
+            width: 6px;
+            height: 6px;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        /* Style for each section */
+        .section {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Each section takes full viewport height */
+            overflow: hidden;
+        }
+
+        /* Background images for each section with blur effect */
+        .section img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire section */
+            filter: blur(4px); /* Apply the blur effect */
+        }
+
+        /* Text overlay for each section */
+        .text-overlay {
+            position: absolute;
+            top: 50%; /* Centering the text vertically */
+            left: 50%; /* Centering the text horizontally */
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background for text visibility */
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #fff;
+            text-align: justify;
+            max-width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Countdown Styling */
+        .countdown {
+            position: absolute;
+            bottom: 65%; /* Distance from the bottom of the section */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff; /* White color for emphasis */
+        }
+
+        /* Floating iframe at the bottom right of the first section */
+        iframe {
+            position: absolute;
+            bottom: 20px; /* Distance from the bottom of the first section */
+            right: 20px; /* Distance from the right side of the first section */
+            width: 240px; /* Set desired width */
+            height: 180px; /* Set desired height */
+            border: none;
+            z-index: 2; /* Ensure the iframe is above other content */
+        }
+
+        /* Optional: Adding some space between sections */
+        .section:not(:last-child) {
+            margin-bottom: 0px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Snowflakes will be added dynamically here -->
+    <div id="snow"></div>
+
+    <!-- First Section with Image and Text -->
+    <div class="section">
+        <img src="image/w2.jpg" alt="First Image">
+
+        <!-- Countdown Text -->
+        <div class="countdown" id="countdown-text"></div>
+
+        <div class="text-overlay">
+            Dear Husband, <br><br>
+            I really hope you're not bored reading this. As you already know, I love writing, drawing, coloring, and capturing moments. I really hope you can get into it, even though these may not be your interests. <br><br>
+            I may not be able to give you an expensive gift, but I am giving you a memorable one. I put in effort, time, and skills to create this gift. I'm sorry that I can't treat you to a holiday trip to celebrate our anniversary or even set up a picnic or dinner like we used to celebrate last year. Despite these financial issues, I hope that we will recover after this.
+        </div>
+
+        <!-- YouTube Embed with Autoplay -->
+        <iframe src="https://www.youtube.com/embed/lciTp4u-PW0?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <!-- Second Section with Image and Text -->
+    <div class="section">
+        <img src="image/w3.jpg" alt="Second Image">
+        <div class="text-overlay">
+            Dear Husband, <br><br>
+            I know I'm not perfect, but I always strive to be the best for us. Thank you for being there for me through the ups and downs, especially this year. It's been a tough year, and I know I couldn't have made it through without you. I'm blessed to have you by my side. <br><br>
+            We may have faced some storms, but I believe that these past two years have taught us valuable lessons and brought us closer. Honestly, we're getting better at understanding each other. Thank you for being patient with me and for being a wonderful husband. I appreciate how you always think of me, especially when it comes to my favorite foods. I'm beyond grateful for those thoughtful gestures.
+        </div>
+    </div>
+
+    <!-- Third Section with Image and Text -->
+    <div class="section">
+        <img src="image/w4.jpg" alt="Third Image">
+        <div class="text-overlay">
+            Dear Husband, <br><br>
+            I cherish creating memorable moments with you. In short, I love spending quality time where we can capture those moments. So, I've prepared this for you. If I were to 'go' before you, you can watch it whenever you want. Life is short, and I want to spend it to the fullest with you. <br><br>
+            We might have different opinions sometimes, but that is not a big issue for us. Lastly, let's grow old together. Here's to many more years of growing older with you.
+        </div>
+    </div>
+
+    <script>
+        // Set the date you first got together (YYYY, MM, DD)
+        const startDate = new Date("2020-01-01T00:00:00"); // Set your start date here
+
+        // Function to update the countdown
+        function updateCountdown() {
+            const now = new Date();
+            const timeElapsed = now - startDate;
+
+            // Calculate time components
+            const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+            // Display the time elapsed since you got together
+            const countdownText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            document.getElementById("countdown-text").innerHTML =
+                `We have been together for ${countdownText}`;
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial call to update the countdown immediately
+        updateCountdown();
+
+        // Function to generate snowflakes dynamically
+        function createSnowflakes() {
+            const snowContainer = document.getElementById('snow');
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.style.left = `${Math.random() * 100}vw`;  // Random horizontal position
+                snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`; // Random duration for variety
+                snowflake.style.animationDelay = `${Math.random() * 10}s`; // Random delay for variety
+                snowContainer.appendChild(snowflake);
+            }
+        }
+
+        // Initialize snowflakes on page load
+        createSnowflakes();
+    </script>
+</body>
+</html>
