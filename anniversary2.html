@@ -17,17 +17,17 @@
 
         /* Snowflakes */
         .snowflake {
-            position: fixed; /* Change to fixed to ensure snowflakes fall over all sections */
-            top: -10px; /* Start from top */
-            width: 5px; /* Small size for snowflakes */
-            height: 5px; /* Small size for snowflakes */
+            position: fixed;
+            top: -10px;
+            width: 5px;
+            height: 5px;
             background-color: white;
-            border-radius: 50%; /* Make the snowflake a circle */
+            border-radius: 50%;
             opacity: 0.8;
             pointer-events: none;
             user-select: none;
             animation: fall linear infinite;
-            z-index: 9999; /* Ensure snowflakes are above all other content */
+            z-index: 9999;
         }
 
         /* Snow falling animation */
@@ -37,12 +37,11 @@
                 transform: translateX(0);
             }
             100% {
-                top: 100vh; /* Snowflakes fall to the bottom of the page */
-                transform: translateX(50px); /* Snowflakes drift to the side */
+                top: 100vh;
+                transform: translateX(50px);
             }
         }
 
-        /* Snowflake styling (size and speed) */
         .snowflake:nth-of-type(odd) {
             width: 4px;
             height: 4px;
@@ -57,35 +56,35 @@
             animation-delay: 2s;
         }
 
-        /* Style for each section */
+        /* Section Styling */
         .section {
             position: relative;
             width: 100%;
-            height: 100vh; /* Each section takes full viewport height */
+            height: 100vh;
             overflow: hidden;
         }
 
-        /* Background images for each section with blur effect */
+        /* Background images */
         .section img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image covers the entire section */
-            filter: blur(4px); /* Apply the blur effect */
+            object-fit: cover;
+            filter: blur(4px);
         }
 
-        /* Text overlay for each section */
+        /* Text Overlay */
         .text-overlay {
             position: absolute;
-            top: 50%; /* Centering the text vertically */
-            left: 50%; /* Centering the text horizontally */
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.7); /* Dark background for text visibility */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #fff;
             text-align: justify;
             max-width: 80%;
@@ -95,28 +94,56 @@
         /* Countdown Styling */
         .countdown {
             position: absolute;
-            bottom: 65%; /* Distance from the bottom of the section */
-            left: 50%; /* Center horizontally */
+            bottom: 65%;
+            left: 50%;
             transform: translateX(-50%);
             font-size: 1.5rem;
             font-weight: bold;
-            color: #ffffff; /* White color for emphasis */
+            color: #ffffff;
         }
 
-        /* Floating iframe at the bottom right of the first section */
+        /* Floating iframe */
         iframe {
             position: absolute;
-            bottom: 20px; /* Distance from the bottom of the first section */
-            right: 20px; /* Distance from the right side of the first section */
-            width: 240px; /* Set desired width */
-            height: 180px; /* Set desired height */
+            bottom: 20px;
+            right: 20px;
+            width: 100%;
+            max-width: 240px;
+            height: 180px;
             border: none;
-            z-index: 2; /* Ensure the iframe is above other content */
+            z-index: -1;
         }
 
-        /* Optional: Adding some space between sections */
+        /* Optional: Space between sections */
         .section:not(:last-child) {
-            margin-bottom: 0px;
+            margin-bottom: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .text-overlay {
+                font-size: 0.8rem; /* Reduce font size on smaller screens */
+                max-width: 90%; /* Allow more space for text */
+            }
+
+            .countdown {
+                font-size: 1rem; /* Smaller countdown font on mobile */
+            }
+
+            iframe {
+                max-width: 100%; /* Ensure iframe is responsive */
+                height: auto; /* Maintain aspect ratio on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-overlay {
+                font-size: 0.7rem; /* Further reduce font size for very small screens */
+            }
+
+            .countdown {
+                font-size: 0.9rem; /* Smaller countdown font for very small screens */
+            }
         }
 
     </style>
@@ -165,7 +192,7 @@
 
     <script>
         // Set the date you first got together (YYYY, MM, DD)
-        const startDate = new Date("2020-01-01T00:00:00"); // Set your start date here
+        const startDate = new Date("2020-01-01T00:00:00");
 
         // Function to update the countdown
         function updateCountdown() {
@@ -196,9 +223,9 @@
             for (let i = 0; i < 100; i++) {
                 const snowflake = document.createElement('div');
                 snowflake.classList.add('snowflake');
-                snowflake.style.left = `${Math.random() * 100}vw`;  // Random horizontal position
-                snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`; // Random duration for variety
-                snowflake.style.animationDelay = `${Math.random() * 10}s`; // Random delay for variety
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                snowflake.style.animationDelay = `${Math.random() * 10}s`;
                 snowContainer.appendChild(snowflake);
             }
         }
